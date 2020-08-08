@@ -1,53 +1,63 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import Axios from "axios";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import axios from "axios";
+import { FaChevronRight } from 'react-icons/fa';
 
 const Home = () => {
-    const [home, setHome] = useState(undefined);
-    const { id } = useParams();
+    const [homes, setHomes] = useState([]);
 
     useEffect(() => {
-        async function fetchHome() {
-            const url = `http://localhost:5050/home/${id}`;
-            const res = await Axios.get(url);
-            setHome(res.data);
+        async function fetchAllHomes() {
+            const res = await axios.get("http://localhost:5050/home/");
+            setHomes(res.data);
         }
-        fetchHome(); // eslint-disable-next-line
+
+        fetchAllHomes();
     }, []);
 
     return (
-        <>
-            <div className="masthead">
-                <div className="container h-100">
-                    <div className="row h-100 align-items-center">
-                        <div className="col-6 text-cente">
-                            {home ? (
-                                <div>
-                                    {/* <h3 className="font-weight-light text-center">{home.name}</h3> */}
-                                    <div className="d-flex">
-                                        {home.images.map((image) => (
-                                            <img
-                                                className="d-block w-100 mr-3"
-                                                src={image.imageLink}
-                                                alt="img"
-                                            />
-                                        ))}
-                                    </div>
-                                    <div className="mt-4 house-info">
-                                        <p className="lead">Rent: {home.rent}</p>
-                                        <p className="lead">Address: {home.address}</p>
-                                    </div>
-                                </div>
-                            ) : (
-                                    <h2>Loading....</h2>
-                                )}
-                        </div>
+        <div class="row">
+            {homes.map((home) => (
+                <div
+                    className="d-inline p-0 col-md-4 col-sm-12 align-items-center shadow-lg bg-light mr-3"
+                    key={home._id}
+                >
+                    <div className="">
+                        <Link key={home._id} to={`/home/${home._id}`}>
+                            <img
+                                className="d-block h-30 w-100"
+                                src={home.images[0].imageLink}
+                                alt="img"
+                            />
+                        </Link>
+                    </div>
+                    <div className="p-3">
+                        <h3>{home.name}</h3>
+
+                        {/* <p>Rent: {home.rent}</p>
+                        <p>Address: {home.address}</p> */}
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td scope="col">Rent:</td>
+                                    <td>{home.rent}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="col"> Address:</td>
+                                    <td>{home.address}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr />
+                        <Link className="link" to={`/home/${home._id}`}>
+                            <h6 className="mt-2 text-uppercase font-weight-bold"><FaChevronRight />  Read more</h6>
+                        </Link>
+
                     </div>
                 </div>
-            </div>
-        </>
+            ))}
+
+        </div>
     );
 };
 

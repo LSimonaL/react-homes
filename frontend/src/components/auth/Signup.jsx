@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
@@ -20,13 +20,13 @@ const Signup = () => {
         if (res.data.error) setErr(res.data.error);
         else {
             setAuth(res.data);
-            history.push("/createhome");
+            history.push("/dashboard");
         }
     };
 
     return (
-        <div className="container mt-5">
-            <div className="auth-wrapper auth-inner">
+        <div className="container">
+            <div className="auth-wrapper h-100 auth-inner">
                 <h3>Signup</h3>
                 {err && <div style={{ color: "#bb0000" }}>{err}</div>}
 
@@ -83,6 +83,11 @@ const Signup = () => {
                     </div>
                     <button className="btn btn-primary btn-form btn-block">Signup</button>
                 </form>
+                <p className="mt-4">Already have an account?
+                    <Link className="nav-link d-inline" to={"/login"}>
+                        Login
+                    </Link>
+                </p>
             </div>
         </div>
     );

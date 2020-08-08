@@ -37,6 +37,18 @@ module.exports.createHomeService = async (homeData, images) => {
     }
 };
 
+module.exports.updateHomeService = async (homeData, homeId) => {
+    try {
+        const home = await Query.getOneHome(homeId);
+        if (!home) throw new Error("Home not found");
+        await Query.updateHome(homeId, homeData);
+        return { data: "home updated succesfully" }
+    } catch (error) {
+        console.log("ErrorIn: updateHomeService :", error);
+        return { error: error.message };
+    }
+};
+
 module.exports.deleteHomeService = async (homeId) => {
     try {
         await Query.deleteHome(homeId);

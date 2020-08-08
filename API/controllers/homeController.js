@@ -2,7 +2,8 @@ const {
     getAllHomesService,
     getOneHomeService,
     createHomeService,
-    deleteHomeService
+    deleteHomeService,
+    updateHomeService
 } = require("../../services/homeService");
 
 module.exports.getAllHomesController = async (req, res) => {
@@ -30,6 +31,16 @@ module.exports.createHomeController = async (req, res) => {
         const { images } = req.files;
 
         const result = await createHomeService(homeData, images);
+        res.status(200).send(result);
+    } catch (error) {
+        res.status(400).send({ error: error.message });
+    }
+};
+
+module.exports.updateHomeController = async (req, res) => {
+    try {
+        if (req.err) throw new Error(req.err);
+        const result = await updateHomeService(req.body, req.params.id);
         res.status(200).send(result);
     } catch (error) {
         res.status(400).send({ error: error.message });

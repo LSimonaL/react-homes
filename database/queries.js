@@ -2,6 +2,9 @@ const User = require("./models/userModel");
 const Home = require("./models/homeModel");
 
 module.exports = {
+
+    //User queries
+
     getUserByEmail: async (email) => await User.findOne({ email }),
     getUserById: async (id) => await User.findOne({ _id: id }),
 
@@ -15,6 +18,7 @@ module.exports = {
         return result;
     },
 
+    //Home queries
 
     getAllHomes: async () => await Home.find(),
 
@@ -23,6 +27,11 @@ module.exports = {
     createHome: async (data) => {
         const home = await new Home({ ...data });
         return await home.save();
+    },
+
+    updateHome: async (homeId, userData) => {
+        const result = await Home.update({ _id: homeId }, userData);
+        return result;
     },
 
     deleteHome: async (homeId) => {

@@ -24,12 +24,12 @@ const Login = () => {
         if (res.data.error) setErr(res.data.error);
         else {
             setAuth(res.data);
-            history.push("/createhome");
+            history.push("/dashboard");
         }
     };
 
     return (
-        <div className="container mt-5">
+        <div className="container">
             <div className="auth-wrapper auth-inner">
                 <form onSubmit={handleSubmit(loginHandler)}>
                     {err && <div style={{ color: "#bb0000" }}>{err}</div>}

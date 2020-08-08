@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-
+import { FaUser } from 'react-icons/fa';
 
 const Navbar = () => {
     const { isLoggedIn, user, clearAuth } = useContext(AuthContext);
@@ -17,7 +17,7 @@ const Navbar = () => {
             <div className="container">
                 <div className="d-flex align-items-center">
                     <Link className="nav-link logo-container" to={"/"}>
-                        <h4 className="logo">rentMe</h4>
+                        <h5 className="logo">rentMe</h5>
                     </Link>
                     {/* {isLoggedIn && (
                         <li className="nav-link">
@@ -55,8 +55,8 @@ const Navbar = () => {
                     ) : (
                             <>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={"/login"}>
-                                        Login
+                                    <Link className="link nav-link" to={"/login"}>
+                                        <FaUser />
                                     </Link>
                                 </li>
                                 {/* <li className="nav-item">
