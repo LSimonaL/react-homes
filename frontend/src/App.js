@@ -9,8 +9,9 @@ import CreateHome from "./components/auth/CreateHome";
 import Homes from "./components/layout/Homes";
 import Home from "./components/layout/Home";
 import Dashboard from "./components/dashboard/Dashboard";
+import Gallery from "./components/layout/Gallery"
 
-// uncomment this...
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/createhome" component={CreateHome} />
             <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/gallery" component={Gallery} />
           </Switch>
         </div>
       </Router>

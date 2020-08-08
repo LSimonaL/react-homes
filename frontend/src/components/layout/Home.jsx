@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const Home = () => {
     const [home, setHome] = useState(undefined);
@@ -23,7 +25,7 @@ const Home = () => {
                         <div className="col-6 text-cente">
                             {home ? (
                                 <div>
-                                    <h3 className="font-weight-light">{home.name}</h3>
+                                    {/* <h3 className="font-weight-light text-center">{home.name}</h3> */}
                                     <div className="d-flex">
                                         {home.images.map((image) => (
                                             <img
@@ -33,8 +35,10 @@ const Home = () => {
                                             />
                                         ))}
                                     </div>
-                                    <p className="lead">Rent: {home.rent}</p>
-                                    <p className="lead">Address: {home.address}</p>
+                                    <div className="mt-4 house-info">
+                                        <p className="lead">Rent: {home.rent}</p>
+                                        <p className="lead">Address: {home.address}</p>
+                                    </div>
                                 </div>
                             ) : (
                                     <h2>Loading....</h2>

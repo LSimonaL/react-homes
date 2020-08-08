@@ -36,3 +36,13 @@ module.exports.createHomeService = async (homeData, images) => {
         return error.message;
     }
 };
+
+module.exports.deleteHomeService = async (homeId) => {
+    try {
+        await Query.deleteHome(homeId);
+        return { message: "housing deleted successfully" };
+    } catch (error) {
+        console.log("ErrorIn: deleteHomeService :", error);
+        return error.message;
+    }
+};

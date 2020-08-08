@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import { useForm } from "react-hook-form"; // library for frontend validation
 import Axios from "axios";
@@ -70,6 +70,11 @@ const Login = () => {
                     </div>
                     <button className="btn btn-primary btn-form btn-block">Login</button>
                 </form>
+                <p className="mt-4">Don't have an account yet?
+                    <Link className="nav-link d-inline" to={"/signup"}>
+                        Sign up
+                    </Link>
+                </p>
 
             </div>
         </div>

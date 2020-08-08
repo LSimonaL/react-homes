@@ -45,3 +45,35 @@ module.exports.registerService = async (data) => {
         return { error: error.message };
     }
 };
+
+module.exports.updateService = async (userData, userId) => {
+    try {
+        const user = await Query.getUserById(userId);
+        if (!user) throw new Error("User does not exist. Please register.");
+        await Query.updateUser(userId, userData);
+        return { data: "User updated succesfully" }
+    } catch (error) {
+        console.log("ErrorIn: updateService :", error);
+        return { error: error.message };
+    }
+};
+
+module.exports.loaduserService = async (userId) => {
+    try {
+        const user = await Query.getUserById(userId);
+        return { user }
+    } catch (error) {
+        console.log("ErrorIn: loaduserService :", error);
+        return { error: error.message };
+    }
+};
+
+module.exports.myhomesService = async (userId) => {
+    try {
+        const homes = await Query.getHomeByUser(userId);
+        return { homes }
+    } catch (error) {
+        console.log("ErrorIn: myhomesService :", error);
+        return { error: error.message };
+    }
+};

@@ -4,6 +4,7 @@ const {
     createHomeController,
     getAllHomesController,
     getOneHomeController,
+    deleteHomeControler
 } = require("../controllers/homeController");
 
 router.get("/", getAllHomesController);
@@ -12,6 +13,7 @@ router.get("/:id", getOneHomeController);
 
 router.post("/createhome", authorization, createHomeController);
 
-// router.post("/delete/:id", authorization,);
+router.delete("/delete/:id", authorization, deleteHomeControler);
+
 
 module.exports = router;

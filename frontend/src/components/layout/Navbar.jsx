@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
-// uncomment this...
 
 const Navbar = () => {
     const { isLoggedIn, user, clearAuth } = useContext(AuthContext);
@@ -17,22 +16,22 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-lg navbar-dark mb-4">
             <div className="container">
                 <div className="d-flex align-items-center">
-                    <Link className="nav-link" to={"/"}>
+                    <Link className="nav-link logo-container" to={"/"}>
                         <h4 className="logo">rentMe</h4>
                     </Link>
-                    {isLoggedIn && (
+                    {/* {isLoggedIn && (
                         <li className="nav-link">
                             <p style={{ margin: "auto" }} className="logo">
                                 Welcome back, {user.name}!
               </p>
                         </li>
-                    )}
+                    )} */}
                 </div>
                 <ul className="navbar-nav ml-auto">
                     <li className="nav-item">
                         <Link className="nav-link" to={"/"}>
                             Home
-            </Link>
+                        </Link>
                     </li>
                     {isLoggedIn ? (
                         <>
@@ -58,13 +57,13 @@ const Navbar = () => {
                                 <li className="nav-item">
                                     <Link className="nav-link" to={"/login"}>
                                         Login
-                </Link>
+                                    </Link>
                                 </li>
-                                <li className="nav-item">
+                                {/* <li className="nav-item">
                                     <Link className="nav-link" to={"/signup"}>
                                         Sign up
-                </Link>
-                                </li>
+                                    </Link>
+                                </li> */}
                             </>
                         )}
                 </ul>
