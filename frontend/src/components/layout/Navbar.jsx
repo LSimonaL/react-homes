@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { FaUser } from 'react-icons/fa';
+import { FaSignOutAlt } from 'react-icons/fa';
 
 const Navbar = () => {
     const { isLoggedIn, user, clearAuth } = useContext(AuthContext);
@@ -13,7 +14,7 @@ const Navbar = () => {
     const logoutHandler = () => clearAuth();
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark mb-4">
+        <nav className="navbar navbar-expand-lg navbar-dark mb-3">
             <div className="container">
                 <div className="d-flex align-items-center">
                     <Link className="nav-link logo-container" to={"/"}>
@@ -48,7 +49,7 @@ const Navbar = () => {
 
                             <li className="nav-item">
                                 <Link className="nav-link" to={"/"} onClick={logoutHandler}>
-                                    Logout
+                                    <FaSignOutAlt style={{ fontSize: "20px" }} />
                                 </Link>
                             </li>
                         </>
@@ -56,7 +57,7 @@ const Navbar = () => {
                             <>
                                 <li className="nav-item">
                                     <Link className="link nav-link" to={"/login"}>
-                                        <FaUser />
+                                        <FaUser style={{ fontSize: "20px" }} />
                                     </Link>
                                 </li>
                                 {/* <li className="nav-item">

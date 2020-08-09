@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-// import { FaChevronRight } from 'react-icons/fa';
+import { FaLongArrowAltLeft } from 'react-icons/fa';
 
 const Home = () => {
     const [home, setHome] = useState(undefined);
@@ -26,6 +26,7 @@ const Home = () => {
                 <div className="container">
                     <div className="row align-items-center">
                         <div>
+                            <Link classNme="link" to={`/`}><FaLongArrowAltLeft style={{ fontSize: "40px", marginBottom: "10px", color: "#14213d" }} /></Link>
                             {home ? (
                                 <div className="d-flex ">
                                     <div className="carousel-wrapper col-8">
