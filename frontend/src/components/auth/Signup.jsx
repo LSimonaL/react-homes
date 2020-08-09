@@ -61,7 +61,7 @@ const Signup = () => {
                                 },
                             })}
                         />
-                        {errors.email && <small>* Invalid email address </small>}
+                        {errors.email && <small className="err-msg">* Invalid email address </small>}
                     </div>
                     <div className="form-group">
                         <label>Password</label>
@@ -78,7 +78,7 @@ const Signup = () => {
                             })}
                         />
                         {errors.password && (
-                            <small>* Minimum 5 alpha numberic charecters </small>
+                            <small className="err-msg">* Your password must have a minimum of 5 characters </small>
                         )}
                     </div>
                     <button className="btn btn-primary btn-form btn-block">Signup</button>

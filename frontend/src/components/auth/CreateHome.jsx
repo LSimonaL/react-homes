@@ -3,9 +3,6 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-
-// uncomment this...
-
 const CreateHome = () => {
     const { register, handleSubmit, errors } = useForm();
     const [images, setImages] = useState([]);
@@ -37,26 +34,29 @@ const CreateHome = () => {
 
     return (
         <div className="container mt-5">
+
             <div className="auth-wrapper auth-inner">
 
                 {feedback ? (
                     <div>
                         <p>{feedback}</p>
-                        <button onClick={handleCreateHome}>Create new home</button>
-                        <button><Link to={"/"}>View available apartments</Link></button>
+                        <div className="d-inline-block">
+                            <button className="btn btn-warning btn-block text-white mb-3" onClick={handleCreateHome}>Create new listing</button>
+                            <Link className="link text-white" to={"/dashboard"}><button className="btn btn-secondary btn-block">Back to dashboard</button></Link>
+                        </div>
                     </div>
                 ) : (
                         <div>
-                            <h2 className="text-center mb-3">Create Home</h2>
+                            <h2 className="text-center mb-3">Create Listing</h2>
                             <form onSubmit={handleSubmit(submitHandler)}>
                                 <div className="form-group">
                                     <input
                                         className="form-control mb-2"
                                         type="text"
                                         name="rooms"
-                                        placeholder="rooms"
+                                        placeholder="Rooms"
                                         ref={register({
-                                            required: "* Title must be minimum 2 charecters",
+                                            required: "* Please enter the number of rooms",
                                             minLength: 1,
                                             pattern: { value: /^[0-9]*$/ },
                                         })}
@@ -64,20 +64,6 @@ const CreateHome = () => {
                                     {errors.rooms && (
                                         <small className="err-msg">{errors.rooms.message}</small>
                                     )}
-                                    {/* <input
-                                        className="form-control mb-2"
-                                        type="text"
-                                        name="name"
-                                        placeholder="Title"
-                                        ref={register({
-                                            required: "* Title must be minimum 2 charecters",
-                                            minLength: 3,
-                                            pattern: { value: /^[a-zA-Z\s]+$/ },
-                                        })}
-                                    />
-                                    {errors.name && (
-                                        <small className="err-msg">{errors.name.message}</small>
-                                    )} */}
 
                                     <input
                                         className="form-control mb-2"
@@ -86,11 +72,11 @@ const CreateHome = () => {
                                         placeholder="Rent"
                                         ref={register({
                                             required: true,
-                                            minLength: 3,
+                                            minLength: 1,
                                             pattern: { value: /^[0-9]*$/ },
                                         })}
                                     />
-                                    {errors.rent && <small>* Rent must be minimum 3 degits. </small>}
+                                    {errors.rent && <small> </small>}
 
                                     <input
                                         className="form-control mb-2"
@@ -100,10 +86,10 @@ const CreateHome = () => {
                                         ref={register({
                                             required: true,
                                             minLength: 5,
-                                            pattern: { value: /^[a-zA-Z\s]+$/ },
+                                            // pattern: { value: /^[a-zA-Z\s]+$/ },
                                         })}
                                     />
-                                    {errors.address && <small>* Incorrect address. </small>}
+                                    {errors.address && <small className="err-msg">* Please enter the address </small>}
 
                                     <input
                                         type="file"
@@ -112,7 +98,7 @@ const CreateHome = () => {
                                         onChange={onChange}
                                         ref={register({ required: true })}
                                     />
-                                    {errors.image && <small>* Please choose image. </small>}
+                                    {errors.image && <small className="err-msg">* Please choose an image </small>}
 
                                     <input
                                         type="file"
@@ -121,7 +107,7 @@ const CreateHome = () => {
                                         onChange={onChange}
                                         ref={register({ required: true })}
                                     />
-                                    {errors.image && <small>* Please choose image. </small>}
+                                    {errors.image && <small className="err-msg">* Please choose an image </small>}
 
                                     <button className="btn btn-warning btn-block mt-2">Create</button>
                                 </div>

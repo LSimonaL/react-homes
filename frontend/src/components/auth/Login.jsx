@@ -48,7 +48,7 @@ const Login = () => {
                                 },
                             })}
                         />
-                        {errors.email && <small>* Invalid email address </small>}
+                        {errors.email && <small className="err-msg">* Invalid email address </small>}
                     </div>
                     <div className="form-group">
                         <label>Password</label>
@@ -65,7 +65,7 @@ const Login = () => {
                             })}
                         />
                         {errors.password && (
-                            <small>* Minimum 5 alpha numberic charecters </small>
+                            <small className="err-msg">* Invalid password </small>
                         )}
                     </div>
                     <button className="btn btn-primary btn-form btn-block">Login</button>

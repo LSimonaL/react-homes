@@ -3,6 +3,10 @@ body {
   overflow-x: hidden;
 }
 
+footer {
+  background-color: #fdcb6e;
+}
+
 .link {
   text-decoration:none;
   color: #457b9d;
@@ -21,6 +25,10 @@ tr {
 td {
   padding-left: 0 !important;
   padding-bottom: 0 !important;
+}
+
+.err-msg {
+  color: red;
 }
 
 /*Navigation*/
@@ -96,20 +104,14 @@ li :hover {
 }
 
 
-footer {
-  background-color: #fdcb6e;
-}
 
-/*Create House*/
-/* .house-info {
-} */
+/*Dashboard*/
 
 /* @media (min-width: 768px) */
 .col-md-4 {
     flex: 0 0 33.333333% !important;
     max-width: 32% !important;
 }
-
 
 .createHomeBtn {
   cursor: pointer;
@@ -124,8 +126,5 @@ footer {
 
 .createHomeBtn:hover {
   box-shadow: 2px 4px 6px 1px #ccc;
-}
 
-/* .profile-container{
-  height: 35%;
-} */
+}
