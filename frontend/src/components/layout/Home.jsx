@@ -19,7 +19,7 @@ const Home = () => {
         <div class="row">
             {homes.map((home) => (
                 <div
-                    className="d-inline p-0 col-md-4 col-sm-12 align-items-center shadow-lg bg-light mr-3"
+                    className="d-inline p-0 col-md-4 col-sm-12 align-items-center shadow-lg bg-light mb-4 mr-3"
                     key={home._id}
                 >
                     <div className="">
@@ -32,10 +32,7 @@ const Home = () => {
                         </Link>
                     </div>
                     <div className="p-3">
-                        <h3>{home.name}</h3>
-
-                        {/* <p>Rent: {home.rent}</p>
-                        <p>Address: {home.address}</p> */}
+                        <h3>{home.rooms}-room apartment</h3>
                         <table class="table table-borderless">
                             <tbody>
                                 <tr>

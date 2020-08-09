@@ -27,9 +27,8 @@ const Home = () => {
                     <div className="row align-items-center">
                         <div>
                             {home ? (
-                                <div className="d-flex">
-                                    {/* <h3 className="font-weight-light text-center">{home.name}</h3> */}
-                                    <div className="carousel-wrapper col-7">
+                                <div className="d-flex ">
+                                    <div className="carousel-wrapper col-8">
                                         <Carousel infiniteLoop useKeyboardArrows autoPlay>
                                             {home.images.map((image) => (
                                                 <img
@@ -40,17 +39,28 @@ const Home = () => {
                                             ))}
                                         </Carousel>
                                     </div>
-                                    <div className="col-5 ml-0 pt-3 house-info ">
-                                        <label className="lead">Rent: </label>
-                                        <p className="lead d-inline p-5">{home.rent} kr.</p>
-                                        <br />
-                                        <label className="lead">Address: </label>
-                                        <p className="lead d-inline p-5"> {home.address}</p>
-                                        {/* <button className="btn btn-secondary mr-2">Edit details</button>
-                                        <button className="btn btn-danger">Delete housing</button> */}
+                                    <div className="col-4 ml-0 house-info">
+                                        <h3>{home.rooms}-room apartment</h3>
+                                        <table class="table table-borderless">
+                                            <tbody>
+                                                <tr>
+                                                    <td scope="col">Rent:</td>
+                                                    <td>{home.rent}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td scope="col"> Rooms:</td>
+                                                    <td>{home.rooms}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td scope="col"> Address:</td>
+                                                    <td>{home.address}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
                                         <br />
                                         <Link to={`/home/${home._id}`}>
-                                            <button className="btn btn-success mt-2">Contact owner</button>
+                                            <button className="btn btn-success btn-block mt-2">Contact owner</button>
                                         </Link>
                                     </div>
 

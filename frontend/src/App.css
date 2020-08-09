@@ -1,4 +1,8 @@
 /*General*/
+body {
+  overflow-x: hidden;
+}
+
 .link {
   text-decoration:none;
   color: #457b9d;
@@ -105,3 +109,23 @@ footer {
     flex: 0 0 33.333333% !important;
     max-width: 32% !important;
 }
+
+
+.createHomeBtn {
+  cursor: pointer;
+  border-radius: 100% !important;
+  box-shadow: 0px 1px 2px 1px #ccc;
+  font-weight: bold !important;
+  font-size: 20px !important;
+  line-height: 24px !important;
+  padding: 2px 13px 5px 13px !important;
+  margin-bottom: 3%;
+}
+
+.createHomeBtn:hover {
+  box-shadow: 2px 4px 6px 1px #ccc;
+}
+
+/* .profile-container{
+  height: 35%;
+} */

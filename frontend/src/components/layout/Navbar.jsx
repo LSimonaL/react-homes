@@ -35,11 +35,11 @@ const Navbar = () => {
                     </li>
                     {isLoggedIn ? (
                         <>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <Link className="nav-link" to={"/createhome"}>
                                     Add new home
                                 </Link>
-                            </li>
+                            </li> */}
                             <li className="nav-item">
                                 <Link className="nav-link" to={"/dashboard"}>
                                     My profile

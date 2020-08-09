@@ -9,12 +9,12 @@ module.exports = async () => {
             useUnifiedTopology: true,
         });
         console.log(`
-    ✅ Database connected successfully ✅
+        Database connected successfully
     `);
     } catch (error) {
         console.log(` 
-    ⛔️  Database NOT connected. ⛔️
-    ⚠️  ERROR: ${error.message} ⚠️
+        Database NOT connected.
+        ERROR: ${error.message}
     `);
     }
 };

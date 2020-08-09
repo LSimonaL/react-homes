@@ -15,7 +15,8 @@ const CreateHome = () => {
 
     const submitHandler = async (data) => {
         const formData = new FormData();
-        formData.append("name", data.name);
+        formData.append("rooms", data.rooms);
+        // formData.append("name", data.name);
         formData.append("rent", data.rent);
         formData.append("address", data.address);
         images.map((image) => formData.append(`images`, image));
@@ -52,6 +53,20 @@ const CreateHome = () => {
                                     <input
                                         className="form-control mb-2"
                                         type="text"
+                                        name="rooms"
+                                        placeholder="rooms"
+                                        ref={register({
+                                            required: "* Title must be minimum 2 charecters",
+                                            minLength: 1,
+                                            pattern: { value: /^[0-9]*$/ },
+                                        })}
+                                    />
+                                    {errors.rooms && (
+                                        <small className="err-msg">{errors.rooms.message}</small>
+                                    )}
+                                    {/* <input
+                                        className="form-control mb-2"
+                                        type="text"
                                         name="name"
                                         placeholder="Title"
                                         ref={register({
@@ -62,7 +77,7 @@ const CreateHome = () => {
                                     />
                                     {errors.name && (
                                         <small className="err-msg">{errors.name.message}</small>
-                                    )}
+                                    )} */}
 
                                     <input
                                         className="form-control mb-2"
