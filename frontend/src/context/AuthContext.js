@@ -8,7 +8,7 @@ const initialState = { isLoggedIn: false, user: null };
 function reducer(state, action) {
     switch (action.type) {
         case "SET_USER":
-            console.log("from reducer", action.payload)
+            // console.log("from reducer", action.payload)
             return { isLoggedIn: true, user: action.payload };
         case "CLEAR_USER":
             return { isLoggedIn: false, user: null };

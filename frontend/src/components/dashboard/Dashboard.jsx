@@ -7,13 +7,15 @@ import { Button } from "react-bootstrap";
 import Home from "../layout/Home"
 
 const Dashboard = () => {
-    const { isLoggedIn, user, loadUser } = useContext(AuthContext);
+    const { user, loadUser } = useContext(AuthContext);
     const { register, handleSubmit, errors } = useForm();
     const [homes, setHomes] = useState([]);
-    const [editForm, setEditForm] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [editProfileForm, setEditProfileForm] = useState(false)
+    const [editHomeId, setEditHomeId] = useState(undefined)
 
     const editHandler = () => {
-        setEditForm(true)
+        setEditProfileForm(true)
     }
 
 
@@ -26,13 +28,13 @@ const Dashboard = () => {
             }
         };
         const body = JSON.stringify(formData);
-        console.log(body);
+        // console.log(body);
 
         try {
             const res = await Axios.put(url, body, config);
             if (res.data) console.log("data:", res.data);
             await loadUser();
-            setEditForm(false);
+            setEditProfileForm(false);
             console.log("new userdata", user)
 
 
@@ -43,14 +45,34 @@ const Dashboard = () => {
     };
 
     useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            setIsLoggedIn(true);
+            loadUser()
+        }
         async function ownHomes() {
-            const res = await Axios.get("http://localhost:5050/user/myhomes");
-            setHomes(res.data);
+            const config = {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    "auth-token": localStorage.getItem("token"),
+                },
+            };
+            const res = await Axios.get("http://localhost:5050/user/myhomes", config);
+            setHomes(res.data.homes);
+
+            // console.log("own homes", res.data.homes);
         }
 
         ownHomes();
     }, []);
 
+    const editHomeIdHandler = (id) => {
+        setEditHomeId(id);
+    }
+
+    const deleteHomeHandler = () => {
+        console.log("deleteHomeHandler")
+    }
 
     return (
         <div className="container">
@@ -61,7 +83,7 @@ const Dashboard = () => {
                             <div className="profile-container align-items-center shadow-lg bg-light p-4 mr-4 mb-4">
                                 <h5 className="mt-1 text-uppercase text-center font-weight-bold mb-4">profile</h5>
                                 {
-                                    editForm ?
+                                    editProfileForm ?
                                         <form onSubmit={handleSubmit(updateHandler)}>
                                             <label style={{ paddingRight: "10px" }}>Name:</label>
                                             <input className="form-control"
@@ -112,9 +134,6 @@ const Dashboard = () => {
                                             </table>
                                             <button className="btn btn-secondary btn-block mt-4" onClick={editHandler}>Edit profile</button>
 
-                                            {/* <Link className="link" to={"/createhome"}>
-                                            <button className="btn btn-warning createHomeBtn"> + </button>
-                                        </Link> */}
                                         </div>
 
                                 }
@@ -127,12 +146,19 @@ const Dashboard = () => {
                             </div>
 
                         </div>
-                        <div className="col-7"><Home /></div>
-                        {/* <div class="col-4 text-center profile-container shadow-lg bg-light p-4 mr-4">
-                            <Link className="link" to={"/createhome"}>
-                                <button variant="light" className="createHomeBtn"> + </button>
-                            </Link>
-                        </div> */}
+                        <div className="col-7">
+                            {homes.map((home) => (
+                                <>
+                                    <Home
+                                        home={home}
+                                        editHomeId={editHomeId}
+                                    />
+                                    <button onClick={() => editHomeIdHandler(home._id)}>Edit</button>
+                                    <button onClick={deleteHomeHandler}>Delete</button>
+                                </>
+                            ))}
+                        </div>
+
                     </div>
                 )}
             </div>

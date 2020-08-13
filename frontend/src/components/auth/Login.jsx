@@ -18,9 +18,9 @@ const Login = () => {
         const config = { headers: { "Content-Type": "application/json" } };
         const body = JSON.stringify(formData);
         const res = await Axios.post(url, body, config);
-        console.log(res.status);
-        console.log(res.data);
-        console.log(res.data.error);
+        // console.log(res.status);
+        // console.log(res.data);
+        // console.log(res.data.error);
         if (res.data.error) setErr(res.data.error);
         else {
             setAuth(res.data);
