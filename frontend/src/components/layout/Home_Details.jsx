@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import { FaLongArrowAltLeft } from 'react-icons/fa';
@@ -20,13 +19,17 @@ const Home = () => {
         fetchHome(); // eslint-disable-next-line
     }, []);
 
+    const contactOwnerHandler = () => {
+        console.log("contactOwnerHandler")
+    };
+
     return (
         <>
-            <div className="masthead">
+            <div className="masthead h-100">
                 <div className="container">
                     <div className="row align-items-center">
                         <div>
-                            <Link classNme="link" to={`/`}><FaLongArrowAltLeft style={{ fontSize: "40px", marginBottom: "10px", color: "#14213d" }} /></Link>
+                            <Link className="link" to={`/`}><FaLongArrowAltLeft style={{ fontSize: "40px", marginBottom: "10px", color: "#14213d" }} /></Link>
                             {home ? (
                                 <div className="d-flex ">
                                     <div className="carousel-wrapper col-8">
@@ -61,7 +64,7 @@ const Home = () => {
 
                                         <br />
                                         <Link to={`/home/${home._id}`}>
-                                            <button className="btn btn-success btn-block mt-2">Contact owner</button>
+                                            <button onClick={contactOwnerHandler} className="btn btn-success btn-block mt-2">Contact owner</button>
                                         </Link>
                                     </div>
 

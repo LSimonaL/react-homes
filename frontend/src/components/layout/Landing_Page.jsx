@@ -33,7 +33,7 @@ const Landing_Page = () => {
                         >
                             <Home home={home} />
                             <Link className="link" to={`/home/${home._id}`}>
-                                <h6 className="mt-2 text-uppercase font-weight-bold"><FaChevronRight />  Read more</h6>
+                                <h6 className="pl-3 pb-2 text-uppercase font-weight-bold"><FaChevronRight />  Read more</h6>
                             </Link>
                         </div>
                     ))}

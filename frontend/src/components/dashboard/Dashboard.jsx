@@ -173,7 +173,7 @@ const Dashboard = () => {
                 </Link>
               </div>
             </div>
-            <div className="col-7">
+            <div className="col-2">
               {homes.map((home) => (
                 <>
                   <Home

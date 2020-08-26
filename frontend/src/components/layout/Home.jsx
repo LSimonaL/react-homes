@@ -9,11 +9,8 @@ const Home = (props) => {
   const { home, editHomeId, editHomeHandler } = props;
 
   return (
-    <div class="row">
-      {/* <div
-                className="d-inline p-0 col-md-4 col-sm-12 align-items-center shadow-lg bg-light mb-4 mr-3"
-                key={home._id}
-            > */}
+    <>
+
       <div className="">
         <Link key={home._id} to={`/home/${home._id}`}>
           <img
@@ -23,7 +20,7 @@ const Home = (props) => {
           />
         </Link>
       </div>
-      <div className="p-3">
+      <div className="px-3 pt-3">
         <h3>{home.rooms}-room apartment</h3>
         {editHomeId == home._id ? (
           // <form onSubmit={handleSubmit(editHomeHandler)}>
@@ -83,26 +80,22 @@ const Home = (props) => {
             <button className="btn btn-warning btn-block mt-4">Update</button>
           </form>
         ) : (
-          <table class="table table-borderless">
-            <tbody>
-              <tr>
-                <td scope="col">Rent:</td>
-                <td>{home.rent}</td>
-              </tr>
-              <tr>
-                <td scope="col"> Address:</td>
-                <td>{home.address}</td>
-              </tr>
-            </tbody>
-          </table>
-        )}
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <td scope="col">Rent:</td>
+                  <td>{home.rent}</td>
+                </tr>
+                <tr>
+                  <td scope="col"> Address:</td>
+                  <td>{home.address}</td>
+                </tr>
+              </tbody>
+            </table>
+          )}
         <hr />
-        {/* <Link className="link" to={`/home/${home._id}`}>
-                        <h6 className="mt-2 text-uppercase font-weight-bold"><FaChevronRight />  Read more</h6>
-                    </Link> */}
       </div>
-      {/* </div> */}
-    </div>
+    </>
   );
 };
 
