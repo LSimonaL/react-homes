@@ -20,4 +20,9 @@ app.use(cors());
 app.use("/home", homeRoutes);
 app.use("/user", userRoutes);
 
+//
+app.use(function (req, res) {
+    res.sendFile(path.join(__dirname, '/frontend/build/index.html'));
+});
+
 module.exports = app;
