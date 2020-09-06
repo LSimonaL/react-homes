@@ -5,6 +5,10 @@ body {
 
 footer {
   background-color: #fdcb6e;
+  position:absolute;
+  left:0;
+  bottom:0;
+  right:0;
 }
 
 .btn {

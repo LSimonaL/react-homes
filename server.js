@@ -1,4 +1,6 @@
-const server = require("./app");
+//initializing server
+
+const server = require("./app"); //creating app module
 const { port } = require("./config");
 const PORT = port || 5000;
 server.listen(PORT, () =>

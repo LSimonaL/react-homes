@@ -12,6 +12,8 @@ import Home from "./components/layout/Home_Details";
 import Dashboard from "./components/dashboard/Dashboard";
 import Gallery from "./components/layout/Gallery"
 import PrivateRoute from "./components/private-route/PrivateRoute"
+import ParentComponent from "./components/ParentComponent"
+import ChildComponent from "./components/ChildComponent"
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
@@ -29,6 +31,8 @@ function App() {
             <Route exact path="/createhome" component={CreateHome} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <Route exact path="/gallery" component={Gallery} />
+            <Route exact path="/parent" component={ParentComponent} />
+            <Route exact path="/child" component={ChildComponent} />
           </Switch>
           <Footer />
         </div>

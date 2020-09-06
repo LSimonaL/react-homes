@@ -6,6 +6,7 @@
 /node_modules
 /.pnp
 .pnp.js
+/exam-folder
 
 # testing
 /coverage
