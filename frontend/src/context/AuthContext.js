@@ -32,7 +32,7 @@ export const AuthProvider = (props) => {
                 "auth-token": localStorage.getItem("token"),
             }
         };
-        const user = await Axios.get("http://localhost:5050/user/loaduser", config)
+        const user = await Axios.get("/user/loaduser", config)
         dispatch({ type: "SET_USER", payload: user });
         console.log("loaduser:", user)
     };

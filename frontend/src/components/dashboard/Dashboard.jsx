@@ -32,8 +32,8 @@ const Dashboard = () => {
     try {
       const res = await Axios.put(url, body, config);
       if (res.data) console.log("data:", res.data);
-      await loadUser();
       setEditProfileForm(false);
+      loadUser();
       console.log("new userdata", user);
     } catch (error) {
       console.log(error.response);
@@ -47,7 +47,7 @@ const Dashboard = () => {
         "auth-token": localStorage.getItem("token"),
       },
     };
-    const res = await Axios.get("http://localhost:5050/user/myhomes", config);
+    const res = await Axios.get("/user/myhomes", config);
     setHomes(res.data.homes);
   };
 
@@ -65,7 +65,7 @@ const Dashboard = () => {
   };
 
   const editHomeHandler = async (formData) => {
-    const url = `http://localhost:5050/home/update/${editHomeId}`;
+    const url = `/home/update/${editHomeId}`;
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -86,9 +86,9 @@ const Dashboard = () => {
     }
   };
 
-  const deleteHomeHandler = () => {
-    console.log("deleteHomeHandler");
-  };
+  // const deleteHomeHandler = () => {
+  //   console.log("deleteHomeHandler");
+  // };
 
   return (
     <div className="container">
@@ -139,27 +139,27 @@ const Dashboard = () => {
                     </button>
                   </form>
                 ) : (
-                  <div>
-                    <table class="table table-borderless">
-                      <tbody>
-                        <tr>
-                          <td scope="col">Name:</td>
-                          <td>{user.name}</td>
-                        </tr>
-                        <tr>
-                          <td scope="col"> Email:</td>
-                          <td>{user.email}</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <button
-                      className="btn btn-secondary btn-block mt-4"
-                      onClick={editHandler}
-                    >
-                      Edit profile
+                    <div>
+                      <table class="table table-borderless">
+                        <tbody>
+                          <tr>
+                            <td scope="col">Name:</td>
+                            <td>{user.name}</td>
+                          </tr>
+                          <tr>
+                            <td scope="col"> Email:</td>
+                            <td>{user.email}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <button
+                        className="btn btn-secondary btn-block mt-4"
+                        onClick={editHandler}
+                      >
+                        Edit profile
                     </button>
-                  </div>
-                )}
+                    </div>
+                  )}
               </div>
               <div class="text-center profile-container shadow-lg bg-light p-4 mr-4 ">
                 <h5 className="mt-1 text-uppercase text-center font-weight-bold mb-4">
@@ -173,9 +173,9 @@ const Dashboard = () => {
                 </Link>
               </div>
             </div>
-            <div className="col-2">
+            <div className="d-flex">
               {homes.map((home) => (
-                <>
+                <div className="col-5">
                   <Home
                     home={home}
                     editHomeId={editHomeId}
@@ -184,13 +184,13 @@ const Dashboard = () => {
 
                   {!editHomeStatus && (
                     <>
-                      <button onClick={() => editHomeIdHandler(home._id)}>
+                      <button className="btn btn-secondary btn-block" onClick={() => editHomeIdHandler(home._id)}>
                         Edit
                       </button>
-                      <button onClick={deleteHomeHandler}>Delete</button>
+                      {/* <button onClick={deleteHomeHandler}>Delete</button> */}
                     </>
                   )}
-                </>
+                </div>
               ))}
             </div>
           </div>

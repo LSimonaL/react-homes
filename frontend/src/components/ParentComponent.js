@@ -5,7 +5,6 @@ const ParentComponent = () => {
 
     const onClickHandler = () => {
         console.log("Clicked!")
-
     }
 
     return (

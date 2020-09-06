@@ -10,7 +10,7 @@ const Landing_Page = () => {
 
     useEffect(() => {
         async function fetchAllHomes() {
-            const res = await axios.get("http://localhost:5050/home/");
+            const res = await axios.get("/home/");
             setHomes(res.data);
         }
 

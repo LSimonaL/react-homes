@@ -12,7 +12,7 @@ const Home = () => {
 
     useEffect(() => {
         async function fetchHome() {
-            const url = `http://localhost:5050/home/${id}`;
+            const url = `/home/${id}`;
             const res = await Axios.get(url);
             setHome(res.data);
         }
@@ -45,7 +45,7 @@ const Home = () => {
                                     </div>
                                     <div className="col-4 ml-0 house-info">
                                         <h3>{home.rooms}-room apartment</h3>
-                                        <table class="table table-borderless">
+                                        <table className="table table-borderless">
                                             <tbody>
                                                 <tr>
                                                     <td scope="col">Rent:</td>
